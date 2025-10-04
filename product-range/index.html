@@ -21,6 +21,23 @@
     <!-- all css here -->
     <link rel="stylesheet" href="../css/main.css" />
     <link rel="stylesheet" href="../css/responsive.css" />
+    <!-- Fallback CSS to hide loader after 3 seconds -->
+    <style>
+      #ftco-loader {
+        animation: autoHideLoader 3s ease-in-out forwards;
+      }
+      
+      @keyframes autoHideLoader {
+        0%, 90% {
+          opacity: 1;
+          visibility: visible;
+        }
+        100% {
+          opacity: 0;
+          visibility: hidden;
+        }
+      }
+    </style>
     <!--   <link rel="stylesheet" media="oriantation: landscape" href="css/landscape.css"> -->
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script
@@ -231,7 +248,7 @@
         <div class="section-title-furits text-center mb-95">
           <img
             class="lazyload"
-            data-src="/img/icon-img/49.png"
+            data-src="../img/icon-img/49.png"
             alt="Leaf-heading"
           />
           <h2>Our Product Range</h2>
@@ -242,7 +259,7 @@
               <div class="product-fruit-img">
                 <img
                   class="lazyload"
-                  data-src="/img/product/product-range/Honey.png"
+                  data-src="../img/product/product-range/Honey.png"
                   alt="Grains and Cereal"
                 />
               </div>
@@ -263,7 +280,7 @@
               <div class="product-fruit-img">
                 <img
                   class="lazyload"
-                  data-src="/img/product/product-range/Jaggery.png"
+                  data-src="../img/product/product-range/Jaggery.png"
                   alt="Pulses"
                 />
               </div>
@@ -280,7 +297,7 @@
               <div class="product-fruit-img">
                 <img
                   class="lazyload"
-                  data-src="/img/product/product-range/Jaggery.png"
+                  data-src="../img/product/product-range/Jaggery.png"
                   alt="Jaggery"
                 />
               </div>
@@ -297,7 +314,7 @@
               <div class="product-fruit-img">
                 <img
                   class="lazyload"
-                  data-src="/img/product/product-range/fruits.jpg"
+                  data-src="../img/product/product-range/fruits.jpg"
                   alt="Fruits"
                 />
               </div>
@@ -312,7 +329,7 @@
           <div class="col-lg-4 col-xl-3 col-md-6">
         <div class="product-fruit-wrapper mb-30">
           <div class="product-fruit-img">
-            <img class="lazyload" data-src="/img/product/product-range/vegetables.jpg" alt="Vegetables">
+            <img class="lazyload" data-src="../img/product/product-range/vegetables.jpg" alt="Vegetables">
           </div>
           <div class="product-fruit-content text-center">
             <h4><a title="Vegetables" href="../vegetables/index.html">Vegetables</a></h4>
@@ -369,7 +386,7 @@
               <div class="product-fruit-img">
                 <img
                   class="lazyload"
-                  data-src="/img/product/product-range/cashew.jpg"
+                  data-src="../img/product/product-range/cashew.jpg"
                   alt="Cashew"
                 />
               </div>
@@ -1222,16 +1239,56 @@
     </div>
 
     <script>
-      var enquire = document.querySelector(".enquire-now");
-      enquire.onclick = (ev) => {
-        ev.preventDefault();
-        var inputEmail = document.querySelector(".EMAIL").value;
-        document.querySelector(".email").value = inputEmail;
-        var isSubscribeValid = $("#subscribe-form").valid();
-        if (isSubscribeValid) {
-          $("#contact-form-modal").modal("show");
+      // Fallback to hide loader even if jQuery fails to load
+      setTimeout(function() {
+        var loader = document.getElementById('ftco-loader');
+        if (loader) {
+          loader.classList.remove('show');
         }
-      };
+      }, 100);
+
+      // Wait for jQuery to load, then hide loader
+      function hideLoader() {
+        if (typeof $ !== 'undefined') {
+          setTimeout(function() {
+            if($('#ftco-loader').length > 0) {
+              $('#ftco-loader').removeClass('show');
+            }
+          }, 1);
+        } else {
+          // jQuery not loaded, try again in 100ms
+          setTimeout(hideLoader, 100);
+        }
+      }
+      
+      // Start trying to hide loader
+      hideLoader();
+
+      var enquire = document.querySelector(".enquire-now");
+      if (enquire) {
+        enquire.onclick = (ev) => {
+          ev.preventDefault();
+          var inputEmail = document.querySelector(".EMAIL").value;
+          var emailField = document.querySelector(".email");
+          if (emailField) {
+            emailField.value = inputEmail;
+          }
+          
+          // Check if jQuery is available before using it
+          if (typeof $ !== 'undefined' && $("#subscribe-form").length > 0) {
+            var isSubscribeValid = $("#subscribe-form").valid();
+            if (isSubscribeValid) {
+              $("#contact-form-modal").modal("show");
+            }
+          } else {
+            // Fallback: just show the modal
+            var modal = document.getElementById('contact-form-modal');
+            if (modal) {
+              modal.style.display = 'block';
+            }
+          }
+        };
+      }
     </script>
 
     <footer class="footer-area fruits-footer">
@@ -1486,7 +1543,7 @@
                   href="https://x.com/G_Choice_Export"
                 >
                   <img
-                    src="/img/icon-img/twitter-50.png"
+                    src="../img/icon-img/twitter-50.png"
                     alt="X icon"
                     style="height: 28px; width: 28px; vertical-align: middle"
                   />

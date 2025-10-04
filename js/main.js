@@ -16,10 +16,19 @@
         });
     }).change();
 
+    // Fallback to hide loader even if jQuery fails to load
     setTimeout(function() {
-        if($('#ftco-loader').length > 0) {
-          $('#ftco-loader').removeClass('show');
-      }
+        var loader = document.getElementById('ftco-loader');
+        if (loader) {
+            loader.classList.remove('show');
+        }
+    }, 100);
+
+    // Hide loader with jQuery when available
+    setTimeout(function() {
+        if(typeof $ !== 'undefined' && $('#ftco-loader').length > 0) {
+            $('#ftco-loader').removeClass('show');
+        }
     }, 1);
 
       $(".btn-comment").click(function(){

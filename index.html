@@ -10,9 +10,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- <link rel="shortcut icon" type="image/x-icon" href="/img/favicon-v2.ico"> -->
    <!-- Standard favicon -->
-   <link rel="icon" type="image/x-icon" href="/img/favicon-v2.ico">
-   <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon-32x32.png">
-   <link rel="apple-touch-icon" sizes="180x180" href="/img/apple-touch-icon.png">
+   <link rel="icon" type="image/x-icon" href="img/favicon-v2.ico">
+   <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png">
+   <link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon.png">
    <!-- (Optional) <link rel="manifest" href="/site.webmanifest"> -->
 <!-- Standard favicon -->
   <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
@@ -20,7 +20,24 @@
   <!-- all css here -->
   <!-- <link rel="stylesheet" href="http://pisumfoods.com/css/main.css"> -->
   <link rel="stylesheet" href="css/main.css">
-  <link rel="stylesheet" href="http://pisumfoods.com/css/responsive.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <!-- Fallback CSS to hide loader after 3 seconds -->
+  <style>
+    #ftco-loader {
+      animation: autoHideLoader 3s ease-in-out forwards;
+    }
+    
+    @keyframes autoHideLoader {
+      0%, 90% {
+        opacity: 1;
+        visibility: visible;
+      }
+      100% {
+        opacity: 0;
+        visibility: hidden;
+      }
+    }
+  </style>
   <!--   <link rel="stylesheet" media="oriantation: landscape" href="css/landscape.css"> -->
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=UA-63624775-2"></script>
@@ -46,7 +63,7 @@
         <div class="header-bottom-wrapper">
           <div class="pisum-logo ptb-10">
             <a href="index.html" title="G-Choice logo">
-              <img src="/img/logo/glogo.png" alt="GChoice Logo">
+              <img src="img/logo/glogo.png" alt="GChoice Logo">
             </a>
           </div>
           <div id="google_translate_element"></div>
@@ -307,8 +324,8 @@
     <a href="http://profiles.dunsregistered.com/DunsRegisteredProfileAnywhere.aspx?key1=3150623&amp;PaArea=email"
       target="popup"
       onclick="window.open('//profiles.dunsregistered.com/DunsRegisteredProfileAnywhere.aspx?key1=3150623&PaArea=email','popup','width=1000,height=1000'); return false;">
-      <img class="sticky" src="http://pisumfoods.com/img/logo/drs_logo.png" alt="drs_logo">
-      <img class="sticky1" src="http://pisumfoods.com/img/logo/click1.png" alt="drs_logo">
+      <img class="sticky" src="img/logo/drs_logo.png" alt="drs_logo">
+      <img class="sticky1" src="img/logo/click1.png" alt="drs_logo">
     </a>
   </span> -->
 
@@ -1880,7 +1897,7 @@
                       </div>
                       <div class="food-info-content">
                         <h6>Phone Number:</h6>
-                        <p>9380549837</p>
+                        <p>+91-9380549837</p>
                       </div>
                     </div>
                     <div class="food-address">
@@ -2780,22 +2797,50 @@
 
   <!-- <script src="/js/vendor/jquery-1.12.0.min.js"></script> -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <script src="http://pisumfoods.com/js/popper.js"></script>
-  <script src="http://pisumfoods.com/js/bootstrap.min.js"></script>
-  <script src="http://pisumfoods.com/js/lazysizes.min.js"></script>
-  <script src="http://pisumfoods.com/js/owl.carousel.min.js"></script>
-  <script src="http://pisumfoods.com/js/plugins.js"></script>
+  <script src="js/popper.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/lazysizes.min.js"></script>
+  <script src="js/owl.carousel.min.js"></script>
+  <script src="js/plugins.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/1.7.0/js/lightgallery-all.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js"
     integrity="sha256-sPB0F50YUDK0otDnsfNHawYmA5M0pjjUf4TvRJkGFrI=" crossorigin="anonymous"></script>
-  <script src="http://cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>
-  <script src="http://pisumfoods.com/js/validator.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>
+  <script src="js/validator.js"></script>
 
   <!-- aws email service -->
   <!-- <script src="/js/contact-form-api.js"></script> -->
 
-  <script async src="http://pisumfoods.com/js/search-product.js"></script>
-  <script src="http://pisumfoods.com/js/main.js"></script>
+  <script async src="js/search-product.js"></script>
+  <script src="js/main.js"></script>
+  
+  <!-- Fallback script to hide loader -->
+  <script>
+    // Fallback to hide loader even if jQuery fails to load
+    setTimeout(function() {
+      var loader = document.getElementById('ftco-loader');
+      if (loader) {
+        loader.classList.remove('show');
+      }
+    }, 100);
+
+    // Wait for jQuery to load, then hide loader
+    function hideLoader() {
+      if (typeof $ !== 'undefined') {
+        setTimeout(function() {
+          if($('#ftco-loader').length > 0) {
+            $('#ftco-loader').removeClass('show');
+          }
+        }, 1);
+      } else {
+        // jQuery not loaded, try again in 100ms
+        setTimeout(hideLoader, 100);
+      }
+    }
+    
+    // Start trying to hide loader
+    hideLoader();
+  </script>
 
   <!-- kwes email service -->
   <!-- <script src="https://kwes.io/v2/kwes-script.js" defer></script> -->
