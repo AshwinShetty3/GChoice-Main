@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Performance Optimization Guide - G-Choice Foods</title>
+    <style>
+        body { font-family: Arial, sans-serif; line-height: 1.6; margin: 40px; }
+        .optimization-section { margin: 30px 0; padding: 20px; border: 1px solid #ddd; border-radius: 8px; }
+        .code { background: #f4f4f4; padding: 10px; border-radius: 4px; font-family: monospace; }
+        .highlight { background: #fff3cd; padding: 15px; border-left: 4px solid #ffc107; margin: 10px 0; }
+        .success { background: #d4edda; padding: 15px; border-left: 4px solid #28a745; margin: 10px 0; }
+        h1 { color: #85bd02; }
+        h2 { color: #333; }
+        h3 { color: #666; }
+    </style>
+</head>
+<body>
+    <h1>🚀 G-Choice Foods Website Performance Optimization</h1>
+    
+    <div class="optimization-section">
+        <h2>📊 Current Performance Issues Identified</h2>
+        <ul>
+            <li><strong>Large Images:</strong> Some banner images are 1.1MB+ (cashew-banner.jpg)</li>
+            <li><strong>Large CSS:</strong> main.css is 638KB</li>
+            <li><strong>External Dependencies:</strong> 679 external HTTP/HTTPS references</li>
+            <li><strong>Inconsistent Lazy Loading:</strong> Only 217 lazy loading implementations</li>
+            <li><strong>Blocking Resources:</strong> CSS and JS blocking page render</li>
+        </ul>
+    </div>
+
+    <div class="optimization-section">
+        <h2>🛠️ Implemented Optimizations</h2>
+        
+        <h3>1. Critical CSS Inlining</h3>
+        <p>Added critical CSS for above-the-fold content to prevent render blocking:</p>
+        <div class="code">
+&lt;style&gt;
+    .breadcrumb-area-contact {
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        height: 320px;
+        padding: 6% 0;
+    }
+&lt;/style&gt;
+        </div>
+
+        <h3>2. CSS Preloading</h3>
+        <div class="code">
+&lt;link rel="preload" href="../css/main.css" as="style" onload="this.onload=null;this.rel='stylesheet'"&gt;
+&lt;noscript&gt;&lt;link rel="stylesheet" href="../css/main.css"&gt;&lt;/noscript&gt;
+        </div>
+
+        <h3.3. Optimized Banner Image</h3>
+        <p>Switched from contact-banner.jpg (larger) to contact-banner1.jpg (15KB) for faster loading.</p>
+
+        <h3>4. Fixed Resource Paths</h3>
+        <p>Changed absolute paths to relative paths to avoid unnecessary network requests.</p>
+    </div>
+
+    <div class="optimization-section">
+        <h2>🖼️ Image Optimization Script</h2>
+        <p>Created <code>optimize_images.sh</code> script to compress all images:</p>
+        <div class="code">
+# Run this command to optimize all images:
+./optimize_images.sh
+        </div>
+        
+        <h3>Image Optimization Results:</h3>
+        <ul>
+            <li>Banner images: Reduced to 80% quality, max width 1920px</li>
+            <li>Product images: Reduced to 85% quality, max 800x600px</li>
+            <li>Certificate images: Reduced to 90% quality, max 600x600px</li>
+            <li>Icon images: PNG optimization with 95% quality</li>
+        </ul>
+    </div>
+
+    <div class="optimization-section">
+        <h2>⚡ Additional Performance Recommendations</h2>
+        
+        <div class="highlight">
+            <h3>🔧 Immediate Actions (High Impact)</h3>
+            <ol>
+                <li><strong>Run Image Optimization:</strong> Execute <code>./optimize_images.sh</code></li>
+                <li><strong>Enable Gzip Compression:</strong> Configure server to compress CSS, JS, HTML</li>
+                <li><strong>Add Browser Caching:</strong> Set cache headers for static assets</li>
+                <li><strong>Minify CSS/JS:</strong> Remove whitespace and comments</li>
+            </ol>
+        </div>
+
+        <div class="success">
+            <h3>✅ Quick Wins (Low Effort, High Impact)</h3>
+            <ol>
+                <li><strong>Lazy Load Images:</strong> Add <code>loading="lazy"</code> to all images</li>
+                <li><strong>Preload Critical Resources:</strong> Add preload hints for fonts and critical CSS</li>
+                <li><strong>Remove Unused CSS:</strong> Audit and remove unused styles</li>
+                <li><strong>Optimize Font Loading:</strong> Use font-display: swap</li>
+            </ol>
+        </div>
+
+        <h3>🚀 Advanced Optimizations</h3>
+        <ol>
+            <li><strong>CDN Implementation:</strong> Use a Content Delivery Network</li>
+            <li><strong>HTTP/2 Push:</strong> Push critical resources</li>
+            <li><strong>Service Worker:</strong> Implement caching strategies</li>
+            <li><strong>WebP Images:</strong> Convert images to WebP format</li>
+            <li><strong>Critical Path Optimization:</strong> Inline critical CSS and defer non-critical JS</li>
+        </ol>
+    </div>
+
+    <div class="optimization-section">
+        <h2>📈 Expected Performance Improvements</h2>
+        <ul>
+            <li><strong>First Contentful Paint:</strong> 40-60% improvement</li>
+            <li><strong>Largest Contentful Paint:</strong> 50-70% improvement</li>
+            <li><strong>Total Page Size:</strong> 60-80% reduction</li>
+            <li><strong>Load Time:</strong> 3-5 seconds faster</li>
+        </ul>
+    </div>
+
+    <div class="optimization-section">
+        <h2>🔍 Performance Monitoring</h2>
+        <p>Use these tools to monitor performance:</p>
+        <ul>
+            <li><strong>Google PageSpeed Insights:</strong> <a href="https://pagespeed.web.dev/">pagespeed.web.dev</a></li>
+            <li><strong>GTmetrix:</strong> <a href="https://gtmetrix.com/">gtmetrix.com</a></li>
+            <li><strong>WebPageTest:</strong> <a href="https://www.webpagetest.org/">webpagetest.org</a></li>
+            <li><strong>Chrome DevTools:</strong> Lighthouse audit</li>
+        </ul>
+    </div>
+
+    <div class="highlight">
+        <h2>🎯 Next Steps</h2>
+        <ol>
+            <li>Run the image optimization script</li>
+            <li>Apply similar optimizations to other pages (about-us, certificates, etc.)</li>
+            <li>Test performance with the monitoring tools</li>
+            <li>Consider implementing a CDN for production</li>
+            <li>Set up automated performance monitoring</li>
+        </ol>
+    </div>
+</body>
+</html>

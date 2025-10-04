@@ -19,8 +19,38 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/1.7.0/css/lightgallery.css" />
   <!-- all css here -->
   <!-- <link rel="stylesheet" href="http://pisumfoods.com/css/main.css"> -->
+  <!-- Critical CSS for above-the-fold content -->
+  <style>
+    .header-bottom { background: #fff; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+    .pisum-logo img { max-height: 60px; }
+    .banner-slider { height: 500px; background-size: cover; }
+    .fruits-banner-content h2 { font-size: 48px; color: #fff; }
+    
+    /* Enhanced lazy loading for background images */
+    .lazyload[data-bg] {
+      background-color: #f0f0f0;
+      transition: background-image 0.3s ease;
+    }
+    
+    /* First banner loads immediately for above-the-fold with optimized image */
+    .owl-slide:first-child.lazyload[data-bg] {
+      background-image: url(img/banner/home4_optimized.jpg);
+    }
+    
+    /* Optimize banner loading with smaller images first */
+    .owl-slide.lazyload[data-bg] {
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      min-height: 500px;
+    }
+  </style>
+  
   <link rel="stylesheet" href="css/main.css">
   <link rel="stylesheet" href="css/responsive.css">
+  <!-- Optimize CSS loading -->
+  <link rel="preload" href="css/main.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="css/main.css"></noscript>
   <!-- Fallback CSS to hide loader after 3 seconds -->
   <style>
     #ftco-loader {
@@ -40,7 +70,7 @@
   </style>
   <!--   <link rel="stylesheet" media="oriantation: landscape" href="css/landscape.css"> -->
   <!-- Global site tag (gtag.js) - Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-63624775-2"></script>
+  <script defer src="https://www.googletagmanager.com/gtag/js?id=UA-63624775-2"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag() { dataLayer.push(arguments); }
@@ -81,7 +111,7 @@
 
 
                 <li><a href="javascript:void(0);">Products</a>
-                  <img src="/img/icon-img/drop.png" alt="products">
+                  <img src="img/icon-img/drop.png" alt="products">
                   <ul class="single-dropdown">
 
                     <li><a href="/grains-and-cereal/index.html">Natural Honey</a></li>
@@ -203,12 +233,12 @@
     }
   </script>
 
-  <script type="text/javascript"
-    src="http://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+  <script type="text/javascript" defer
+    src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
   <section class="slider-area mb-100">
     <div class="owl-carousel owl-theme banner-slider">
-      <div class="owl-slide d-flex align-items-center cover"
-        style="background-image: url(img/banner/home4.png);">
+      <div class="owl-slide d-flex align-items-center cover lazyload"
+        data-bg="img/banner/home4_optimized.jpg">
         <div class="container">
           <div class="text-center text-white main-home-heading">
             <h1>Welcome to G-Choice Exports Purity From Nature, Delivered Globally</h1>
@@ -217,8 +247,8 @@
         </div>
       </div>
 
-      <div class="owl-slide d-flex align-items-center cover"
-        style="background-image: url(img/banner/home3.png);">
+      <div class="owl-slide d-flex align-items-center cover lazyload"
+        data-bg="img/banner/home3_optimized.jpg">
         <div class="container">
           <div class="text-center text-white main-home-heading">
             <!-- <h1>Global Quality Food Exporter From India</h1>
@@ -227,8 +257,8 @@
         </div>
       </div>
 
-      <div class="owl-slide d-flex align-items-center cover"
-        style="background-image: url(img/banner/home2.png);">
+      <div class="owl-slide d-flex align-items-center cover lazyload"
+        data-bg="img/banner/home2_optimized.jpg">
         <div class="container">
           <!-- <div class="text-center text-white main-home-heading">
           <h1>Global Quality Food Exporter From India</h1>
@@ -237,8 +267,8 @@
         </div>
       </div>
 
-      <div class="owl-slide d-flex align-items-center cover"
-        style="background-image: url(img/banner/home5.png);">
+      <div class="owl-slide d-flex align-items-center cover lazyload"
+        data-bg="img/banner/home5_optimized.jpg">
         <div class="container">
           <div class="text-center text-white main-home-heading">
             <!-- <h1>Global Quality Food Exporter From India</h1>
@@ -429,7 +459,7 @@
           <div class="product-fruit-wrapper mb-30">
             <a href="grains-and-cereal/index.html">
               <div class="product-fruit-img">
-                <img class="lazyload" data-src="/img/product/product-range/Honey.png"
+                <img class="lazyload" data-src="img/product/product-range/Honey.png"
                   alt="Grains and Cereal">
               </div>
             </a>
@@ -798,7 +828,7 @@
           <div class="product-fruit-wrapper mb-30">
             <a href="grains-and-cereal/index.html">
               <div class="product-fruit-img">
-                <img class="lazyload" data-src="/img/product/product-range/Honey.png"
+                <img class="lazyload" data-src="img/product/product-range/Honey.png"
                   alt="Grains and Cereal">
               </div>
             </a>
@@ -2814,7 +2844,7 @@
   <script async src="js/search-product.js"></script>
   <script src="js/main.js"></script>
   
-  <!-- Fallback script to hide loader -->
+  <!-- Fallback script to hide loader and enhance lazy loading -->
   <script>
     // Fallback to hide loader even if jQuery fails to load
     setTimeout(function() {
@@ -2840,6 +2870,42 @@
     
     // Start trying to hide loader
     hideLoader();
+
+    // Enhanced lazy loading for background images
+    function initLazyBackgrounds() {
+      const lazyBackgrounds = document.querySelectorAll('.lazyload[data-bg]');
+      
+      if ('IntersectionObserver' in window) {
+        const backgroundObserver = new IntersectionObserver(function(entries) {
+          entries.forEach(function(entry) {
+            if (entry.isIntersecting) {
+              const bgUrl = entry.target.getAttribute('data-bg');
+              entry.target.style.backgroundImage = 'url(' + bgUrl + ')';
+              entry.target.classList.remove('lazyload');
+              backgroundObserver.unobserve(entry.target);
+            }
+          });
+        });
+
+        lazyBackgrounds.forEach(function(lazyBackground) {
+          backgroundObserver.observe(lazyBackground);
+        });
+      } else {
+        // Fallback for older browsers
+        lazyBackgrounds.forEach(function(lazyBackground) {
+          const bgUrl = lazyBackground.getAttribute('data-bg');
+          lazyBackground.style.backgroundImage = 'url(' + bgUrl + ')';
+          lazyBackground.classList.remove('lazyload');
+        });
+      }
+    }
+
+    // Initialize lazy loading when DOM is ready
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initLazyBackgrounds);
+    } else {
+      initLazyBackgrounds();
+    }
   </script>
 
   <!-- kwes email service -->

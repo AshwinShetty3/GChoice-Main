@@ -9,12 +9,48 @@
     content="G-Choice Foods is one of the reputed food export company in India. Contact Us to export food from India.">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- <link rel="shortcut icon" type="image/x-icon" href="../img/favicon.ico"> -->
-  <link rel="shortcut icon" type="image/x-icon" href="/img/favicon-v2.ico">
+  <link rel="shortcut icon" type="image/x-icon" href="../img/favicon-v2.ico">
   <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/1.7.0/css/lightgallery.css" />
   <!-- all css here -->
   <link rel="stylesheet" href="../css/main.css">
   <link rel="stylesheet" href="../css/responsive.css">
+  <!-- Critical CSS for above-the-fold content -->
+  <style>
+    .breadcrumb-area-contact {
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      height: 320px;
+      padding: 6% 0;
+      position: relative;
+    }
+    .breadcrumb-content h2 {
+      font-size: 48px;
+      font-weight: 700;
+      margin-bottom: 15px;
+    }
+    .breadcrumb-content ul {
+      list-style: none;
+      padding: 0;
+    }
+    .breadcrumb-content ul li {
+      display: inline-block;
+      margin-right: 10px;
+    }
+    .breadcrumb-content ul li:after {
+      content: '/';
+      margin-left: 10px;
+      color: #ffffff;
+    }
+    .breadcrumb-content ul li:last-child:after {
+      display: none;
+    }
+  </style>
+  
+  <!-- Optimize CSS loading -->
+  <link rel="preload" href="../css/main.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="../css/main.css"></noscript>
   <!--   <link rel="stylesheet" media="oriantation: landscape" href="css/landscape.css"> -->
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=UA-63624775-2"></script>
@@ -201,7 +237,7 @@
 
   <script type="text/javascript"
     src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-  <section class="breadcrumb-area-contact mt-140">
+  <section class="breadcrumb-area-contact mt-140" style="background-image: url('../img/banner/contact-banner1.jpg');">
     <div class="container">
       <div class="breadcrumb-content">
         <h2 style="color: #ffffff;">contact us</h2>
