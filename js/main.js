@@ -22,12 +22,29 @@
         if (loader) {
             loader.classList.remove('show');
         }
+        
+        // Force load all lazy-loaded images
+        document.querySelectorAll('img.lazyload').forEach(function(img) {
+            if (img.dataset.src) {
+                img.src = img.dataset.src;
+                img.classList.remove('lazyload');
+            }
+        });
     }, 100);
 
     // Hide loader with jQuery when available
     setTimeout(function() {
         if(typeof $ !== 'undefined' && $('#ftco-loader').length > 0) {
             $('#ftco-loader').removeClass('show');
+            
+            // Force load all lazy-loaded images with jQuery
+            $('img.lazyload').each(function() {
+                var img = $(this);
+                if (img.data('src')) {
+                    img.attr('src', img.data('src'));
+                    img.removeClass('lazyload');
+                }
+            });
         }
     }, 1);
 

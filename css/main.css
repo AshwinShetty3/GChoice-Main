@@ -2073,47 +2073,6 @@ pre code {
     }
 }
 
-
-/* Google Translotor */
-@media (max-width: 767px) {
-    #google_translate_element,
-    .g-translate-custom {
-      position: fixed !important;
-      top: 12px;
-      right: 60px; /* Move it more to the left (increase this value as needed) */
-      z-index: 9999;
-      border-radius: 24px;
-      padding: 0;
-      display: flex;
-      align-items: center;
-      width: auto;
-      max-width: 90vw;
-    }
-    #google_translate_element select,
-    #google_translate_element .goog-te-combo {
-      min-width: 140px !important;  /* Make it a bit wider */
-      width: 140px !important;
-      margin-right: 40px;
-      font-size: 12px !important;
-      font-weight: 600 !important;
-      padding: 6px 10px !important;
-      height: 35px !important;
-      line-height: 1.1 !important;
-    }
-    #google_translate_element:before,
-    .g-translate-globe {
-      width: 14px;
-      height: 14px;
-    }
-  }
-
-  /* hover effect for Google translator */
-
-  
-
-  /* hover effect end  */
-
-/* bf6730d (Updated Google Translator design) */
 @media (max-width: 991px) {
     .table-responsive-lg {
         display: block;
@@ -37425,24 +37384,10 @@ html {
     right: 10px;
     z-index: 100
 } */
-/* main */
+
 /* header {
     position: relative;
 } */
-
-/* Hide the 'Powered by' text from Google Translate widget */
-.goog-logo-link,
-.goog-te-gadget span,
-.goog-te-banner-frame.skiptranslate,
-.goog-te-gadget .goog-te-combo + div,
-.goog-te-gadget .goog-te-banner-frame,
-.goog-te-gadget .goog-te-banner {
-    display: none !important;
-}
-
-.goog-te-gadget {
-    color: transparent !important;
-}
 
 /* --- Custom Google Translate Widget Styling --- */
 #google_translate_element {
@@ -37488,7 +37433,6 @@ html {
   /* --- End Google Translate Widget Styling --- */
 
 
-/* >>>>>>> bf6730d (Updated Google Translator design) */
 
 .goog-te-gadget {
     color: transparent !important
@@ -37881,8 +37825,7 @@ select.goog-te-combo {
 }
 
 .breadcrumb-area-contact {
-    /* background-image: url("../img/banner/contact-banner.jpg") */
-    background-image: url("../img/banner/contact-banner1.jpg")
+    background-image: url("../img/banner/contact-banner.jpg")
 }
 
 .countryCode {
@@ -38877,60 +38820,5 @@ button:active {
 .agent {
     display: none
 }
-
-
-/* Design By Hover effect and color */
-.hover-underline {
-    position: relative;
-    display: inline-block;
-    transition: color 0.4s ease-out;
-}
-
-/* Gradient text color on hover */
-.hover-underline:hover {
-    background: linear-gradient(to right, #ff0000, #00ffff);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    text-fill-color: transparent;
-    color: #ff0000; /* fallback for browsers that don't support gradient text */
-}
-
-/* Animated gradient underline */
-.hover-underline::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: 2px;
-    width: 100%;
-    height: 2px;
-    background: linear-gradient(to right, #ff0000, #00ffff);
-    transform: scaleX(0);
-    transform-origin: right;
-    transition: transform 0.4s ease-out;
-    z-index: 1;
-}
-
-.hover-underline:hover::after {
-    transform: scaleX(1);
-    transform-origin: left;
-}
-  
-
-  /* Pointer on hover */
-  /* .pointer {
-    cursor: pointer;
-    background: linear-gradient(145deg, #2a2a2a, #383838);
-    border: 2px solid #646cff;
-}
-.pointer:hover {
-    transform: scale(1.05) rotate(2deg);
-    box-shadow: 0 0 15px #646cff50;
-} */
-
-
-/* Effect for social media icon glowing */
-
-
 
 /*# sourceMappingURL=main.css.map */

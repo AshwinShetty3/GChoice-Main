@@ -1,0 +1,24 @@
+{
+  "name": "g-choice-main",
+  "version": "1.0.0",
+  "description": "<<<<<<< HEAD # GChoice-Main ======= # G-Choice G-Choice Export Website >>>>>>> 0e6f16a (All Updated code)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AshwinShetty3/GChoice-Main.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AshwinShetty3/GChoice-Main/issues"
+  },
+  "homepage": "https://github.com/AshwinShetty3/GChoice-Main#readme",
+  "devDependencies": {
+    "clean-css-cli": "^5.6.3",
+    "uglify-js": "^3.19.3"
+  }
+}

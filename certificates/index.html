@@ -18,10 +18,11 @@
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/1.7.0/css/lightgallery.css"
+      media="print" onload="this.media='all'"
     />
     <!-- all css here -->
     <link rel="stylesheet" href="../css/main.css" />
-    <link rel="stylesheet" href="../css/responsive.css" />
+    <link rel="stylesheet" href="../css/responsive.css" media="print" onload="this.media='all'" />
     <!--   <link rel="stylesheet" media="oriantation: landscape" href="css/landscape.css"> -->
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script
@@ -50,7 +51,7 @@
           <div class="header-bottom-wrapper">
             <div class="pisum-logo ptb-10">
               <a href="index.html" title="G-Choice logo">
-                <img src="/img/logo/glogo.png" alt="GChoice Logo" />
+                <img src="/img/logo/glogo.png" alt="GChoice Logo" loading="eager" />
               </a>
             </div>
             <div id="google_translate_element"></div>
@@ -214,6 +215,7 @@
     <script
       type="text/javascript"
       src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"
+      defer
     ></script>
     <section class="breadcrumb-area-certificates mt-140">
       <div class="container">
@@ -328,6 +330,7 @@
                 class="mx-auto d-block"
                 src="../img/certificates/GSTIN.jpg"
                 alt="GST"
+                loading="lazy"
               />
             </a>
             <p class="text-center">GST</p>
@@ -342,6 +345,7 @@
                 class="mx-auto d-block"
                 src="../img/certificates/MSME.jpg"
                 alt="MSME"
+                loading="lazy"
               />
             </a>
             <p class="text-center">MSME</p>
@@ -2497,13 +2501,13 @@
       crossorigin="anonymous"
     ></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>
-    <script src="../js/validator.js"></script>
+    <script src="../js/validator.js" defer></script>
 
     <!-- aws email service -->
     <!-- <script src="/js/contact-form-api.js"></script> -->
 
     <script async src="../js/search-product.js"></script>
-    <script src="../js/main.js"></script>
+    <script src="../js/main.js" defer></script>
 
     <!-- kwes email service -->
     <script src="https://kwes.io/v2/kwes-script.js" defer></script>

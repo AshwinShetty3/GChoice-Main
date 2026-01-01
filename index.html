@@ -16,15 +16,26 @@
    <!-- (Optional) <link rel="manifest" href="/site.webmanifest"> -->
 <!-- Standard favicon -->
   <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/1.7.0/css/lightgallery.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/1.7.0/css/lightgallery.css" media="print" onload="this.media='all'" />
   <!-- all css here -->
-  <!-- <link rel="stylesheet" href="http://pisumfoods.com/css/main.css"> -->
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/responsive.css" media="print" onload="this.media='all'">
   <!-- Critical CSS for above-the-fold content -->
   <style>
     .header-bottom { background: #fff; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
     .pisum-logo img { max-height: 60px; }
     .banner-slider { height: 500px; background-size: cover; }
     .fruits-banner-content h2 { font-size: 48px; color: #fff; }
+    
+    /* Add margin-top to View More button on mobile to prevent overlap */
+    @media (max-width: 767px) {
+      .product-style-area .text-center {
+        margin-top: 5px !important;
+      }
+      .range-button {
+        margin-top: 40px !important;
+      }
+    }
     
     /* Enhanced lazy loading for background images */
     .lazyload[data-bg] {
@@ -34,7 +45,7 @@
     
     /* First banner loads immediately for above-the-fold with optimized image */
     .owl-slide:first-child.lazyload[data-bg] {
-      background-image: url(img/banner/home4_optimized.jpg);
+      background-image: url(img/optimized/banner/home4_optimized.jpg);
     }
     
     /* Optimize banner loading with smaller images first */
@@ -44,13 +55,84 @@
       background-repeat: no-repeat;
       min-height: 500px;
     }
+    
+    /* Ensure banner images are displayed properly */
+    .owl-slide {
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      min-height: 500px;
+    }
+    
+    /* Mobile-specific adjustments for slider spacing - matching About Us page */
+    @media (max-width: 767px) {
+      .slider-area.mt-80 {
+        margin-top: 5px !important;
+        margin-bottom: 1px !important;
+      }
+      .banner-slider .owl-slide {
+        min-height: 200px !important;
+        height: 200px !important;
+      }
+      .banner-slider,
+      .banner-slider.owl-carousel,
+      .owl-carousel.banner-slider,
+      .slider-area .owl-carousel,
+      .slider-area .owl-carousel.owl-theme,
+      div.owl-carousel.owl-theme.banner-slider,
+      div.owl-carousel.owl-theme.banner-slider.owl-loaded {
+        height: 320px !important;
+        max-height: 320px !important;
+        padding-bottom: 10px !important;
+        margin-bottom: 10 !important;
+      }
+      .slider-area {
+        padding-bottom: 10px !important;
+        margin-bottom: 0 !important;
+      }
+      .main-home-heading h1 {
+        font-size: 22px !important;
+        line-height: 1.3;
+      }
+      .main-home-heading h3 {
+        font-size: 14px !important;
+        line-height: 1.4;
+      }
+      
+      /* Add gap between translator and hamburger menu */
+      #google_translate_element {
+        margin-right: 20px !important;
+      }
+      .handicraft-menu .mean-container a.meanmenu-reveal {
+        margin-left: 15px !important;
+      }
+    }
+    
+    @media (min-width: 768px) and (max-width: 991px) {
+      .slider-area.mt-80 {
+        margin-top: 60px !important;
+        margin-bottom: 25px !important;
+      }
+      .banner-slider .owl-slide {
+        min-height: 250px !important;
+        height: 250px !important;
+      }
+      .main-home-heading h1 {
+        font-size: 32px !important;
+      }
+      .main-home-heading h3 {
+        font-size: 18px !important;
+      }
+    }
+    
+    /* Desktop adjustments - reduce spacing */
+    @media (min-width: 992px) {
+      .slider-area.mt-80 {
+        margin-top: 80px !important;
+        margin-bottom: 30px !important;
+      }
+    }
   </style>
-  
-  <link rel="stylesheet" href="css/main.css">
-  <link rel="stylesheet" href="css/responsive.css">
-  <!-- Optimize CSS loading -->
-  <link rel="preload" href="css/main.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="css/main.css"></noscript>
   <!-- Fallback CSS to hide loader after 3 seconds -->
   <style>
     #ftco-loader {
@@ -68,6 +150,9 @@
       }
     }
   </style>
+
+
+
   <!--   <link rel="stylesheet" media="oriantation: landscape" href="css/landscape.css"> -->
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <script defer src="https://www.googletagmanager.com/gtag/js?id=UA-63624775-2"></script>
@@ -93,7 +178,7 @@
         <div class="header-bottom-wrapper">
           <div class="pisum-logo ptb-10">
             <a href="index.html" title="G-Choice logo">
-              <img src="img/logo/glogo.png" alt="GChoice Logo">
+              <img src="img/logo/glogo.png" alt="GChoice Logo" loading="eager">
             </a>
           </div>
           <div id="google_translate_element"></div>
@@ -235,10 +320,10 @@
 
   <script type="text/javascript" defer
     src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-  <section class="slider-area mb-100">
+  <section class="slider-area mb-30 mt-80">
     <div class="owl-carousel owl-theme banner-slider">
-      <div class="owl-slide d-flex align-items-center cover lazyload"
-        data-bg="img/banner/home4_optimized.jpg">
+      <div class="owl-slide d-flex align-items-center cover" 
+        style="background-image: url('img/optimized/banner/home4_optimized.jpg');">
         <div class="container">
           <div class="text-center text-white main-home-heading">
             <h1>Welcome to G-Choice Exports Purity From Nature, Delivered Globally</h1>
@@ -247,8 +332,8 @@
         </div>
       </div>
 
-      <div class="owl-slide d-flex align-items-center cover lazyload"
-        data-bg="img/banner/home3_optimized.jpg">
+      <div class="owl-slide d-flex align-items-center cover" 
+        style="background-image: url('img/optimized/banner/home3_optimized.jpg');">
         <div class="container">
           <div class="text-center text-white main-home-heading">
             <!-- <h1>Global Quality Food Exporter From India</h1>
@@ -257,8 +342,8 @@
         </div>
       </div>
 
-      <div class="owl-slide d-flex align-items-center cover lazyload"
-        data-bg="img/banner/home2_optimized.jpg">
+      <div class="owl-slide d-flex align-items-center cover" 
+        style="background-image: url('img/optimized/banner/home2_optimized.jpg');">
         <div class="container">
           <!-- <div class="text-center text-white main-home-heading">
           <h1>Global Quality Food Exporter From India</h1>
@@ -267,8 +352,8 @@
         </div>
       </div>
 
-      <div class="owl-slide d-flex align-items-center cover lazyload"
-        data-bg="img/banner/home5_optimized.jpg">
+      <div class="owl-slide d-flex align-items-center cover" 
+        style="background-image: url('img/optimized/banner/home5_optimized.jpg');">
         <div class="container">
           <div class="text-center text-white main-home-heading">
             <!-- <h1>Global Quality Food Exporter From India</h1>
@@ -362,14 +447,13 @@
   <section class="pb-105 mrl-80">
     <div class="container">
       <div class="section-title-furits text-center mb-80">
-        <img class="lazyload" data-src="img/icon-img/49.png" alt="leaf-heading">
+        <img src="img/icon-img/49.png" alt="leaf-heading" style="width: 60px; height: auto; display: block; margin: 0 auto 20px auto;">
         <h2>G-Choice Global Food Importers & Exporters</h2>
       </div>
-      <p class="text-dark text-justify">"At G-Choice Exports, we are proud ambassadors of India's rich agricultural
+      <p class="text-dark text-justify">At G-Choice Exports, we are proud ambassadors of India's rich agricultural
         heritage, bringing the finest natural honey, jaggery, fresh fruits, and vegetables from Indian farms to the
         world. Rooted in purity, sustainability, and trust, our mission is to deliver 100% natural, chemical-free, and
         farm-fresh produce to international markets while empowering local farmers and promoting eco-conscious farming.
-        "
       </p>
       <br>
       <p class="text-dark text-justify">Based in India, one of the world's most diverse agricultural hubs, G-Choice
@@ -449,7 +533,7 @@
   <!-- <section class="product-style-area pt-80 pb-30" id="product-range">
     <div class="container">
       <div class="section-title-furits text-center mb-95">
-        <img class="lazyload" data-src="img/icon-img/49.png" alt="Product range">
+        <img src="img/icon-img/49.png" alt="Product range">
         <h2>Our Product Range</h2>
       </div>
       <div class="row mrl-20">
@@ -472,7 +556,7 @@
   <section class="product-style-area gray-bg-4 pb-105">
     <div class="container-fluid">
       <div class="section-title-furits bg-shape text-center mb-80">
-        <img class="lazyload" data-src="img/icon-img/49.png" alt="leaf-heading">
+        <img src="img/icon-img/49.png" alt="leaf-heading">
         <h2>Popular Products</h2>
       </div>
       <div class="product-fruit-slider owl-carousel owl-theme">
@@ -1046,7 +1130,7 @@
   </script>
   <!--<section class="banner-area" id="top-space">
   <div class="section-title-furits text-center mb-95">
-    <img class="lazyload" data-src="img/icon-img/49.png" alt="leaf-heading">
+    <img src="img/icon-img/49.png" alt="leaf-heading">
     <h2>COVID 19 Security Measures</h2>
   </div>
   <div class="row no-gutters">
